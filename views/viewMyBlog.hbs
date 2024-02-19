@@ -1,0 +1,43 @@
+<title>{{title}}</title>
+
+
+<div class="content">
+    <a href="/myBlogs/?page={{currentPageNumber}}" class="text-decoration-none btn btn-primary mt-5"><i
+            class="fa-solid fa-arrow-left me-2"></i>Back</a>
+    <h1 class="mt-3">{{article.title}}</h1>
+    <p>{{article.author.firstName}} {{article.author.lastName}}</p>
+    <p class="text-muted">Published on: {{article.publishedOnFormatted}}</p>
+    <hr>
+    <p class="my-4 lh-base article-body">{{article.body}}</p>
+    <hr>
+    {{#if isAuthenticated}}
+    {{#if matchUserAndArticle }}
+    <div class="d-flex align-items-center justify-content-between mt-4">
+        <a href="/blogs/edit/{{article._id}}" class="btn btn-dark">Edit</a>
+        <a href="#" id="delete-article" class="btn btn-danger" data-bs-toggle="modal"
+            data-bs-target="#deleteModal">Delete</a>
+    </div>
+    {{/if}}
+    {{/if}}
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Delete</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure that you want to delete <span class="fw-semibold mx-2">{{article.title}}</span> article
+                    ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="deleteBtn" data-article-id="{{article._id}}"
+                        data-bs-dismiss="modal" data-page-number="{{currentPageNumber}}">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

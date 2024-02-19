@@ -1,0 +1,17 @@
+<title>{{title}}</title>
+
+
+<a href="/blogs/{{article._id}}" class="text-decoration-none btn btn-primary mt-4">Back</a>
+<h1 class="mb-3 mt-2">Edit</h1>
+<form action="/blogs/edit/{{article._id}}" method="post">
+    <div id="form-group">
+        <label for="form-label" class="form-label fw-semibold">Title </label>
+        <input type="text" name="title" class="form-control" value={{article.title}}>
+    </div>
+    <div id="form-group">
+        <label for="form-label" class="form-label fw-semibold">Body </label>
+        <textarea name="body" class="form-control article-body" rows="10">{{article.body}}</textarea>
+    </div>
+
+    <input type="submit" value="Submit" class="btn btn-primary mt-2">
+</form>

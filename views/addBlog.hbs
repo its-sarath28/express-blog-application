@@ -1,0 +1,18 @@
+<title>{{title}}</title>
+
+
+<div class="row">
+    <div class="col">
+        <h1 class="mt-4 mb-3">{{heading}}</h1>
+        <form action="/blogs/add" method="post">
+            <div>
+                <input type="text" placeholder="Enter yout blog title" name="title" class="form-control" value="{{#if values.title}}{{values.title}}{{/if}}">
+            </div>
+            <div class="mt-3">
+                <textarea name="body" placeholder="Enter the blog content" class="form-control" rows="15">{{#if values.body}}{{values.body}}{{/if}}</textarea>
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-primary mt-3">
+        </form>
+    </div>
+</div>

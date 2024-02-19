@@ -1,0 +1,27 @@
+<title>{{title}}</title>
+
+<h1 class="my-3">Blogs</h1>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 gx-4">
+    {{#each articles}}
+    <div class="col">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title fw-bold">{{this.title}}</h3>
+                <p class="mb-0 fs-6 fw-semibold">{{this.author.firstName}} {{this.author.lastName}}</p>
+                <p class="text-muted mb-2">{{this.publishedOnFormatted}}</p>
+                <p class="card-text">
+                    <span class="d-inline-block text-truncate w-75 wrap">
+                        {{this.body}}
+                    </span>
+                </p>
+                <a href="/blogs/{{this._id}}?page={{req.query.page}}" class="btn btn-primary">View <i
+                        class="fa-solid fa-arrow-right ms-2"></i></a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+<div class="d-flex justify-content-center mt-2">
+    {{> paginate currentPage=currentPage}}
+</div>
