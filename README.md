@@ -28,6 +28,7 @@ In this the users can view the blogs written by the bloggers
 
 ```bash
 MONGODB_URL=
+SESSION_SECRET=
 ```
 
 ## Install the dependencies by:
