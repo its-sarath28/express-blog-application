@@ -24,6 +24,12 @@ In this the users can view the blogs written by the bloggers
 
 **Template Engine:** Handlebars
 
+## Create a .env file and add
+
+```bash
+MONGODB_URL=
+```
+
 ## Install the dependencies by:
 
 ```bash
