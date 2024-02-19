@@ -23,8 +23,8 @@ const userRouter = require("./routes/users");
 
 const app = express();
 
-const mongoURL = ``; //Add your MONGODB connection URL here
-const dbName = `blog`;
+require("dotenv").config();
+require("./config/connectdb");
 
 const isAuthenticated = (req, res, next) => {
   if (req.session && req.session.userId) {
@@ -83,16 +83,16 @@ app.use((req, res, next) => {
   next();
 });
 
-mongoose.connect(mongoURL + dbName);
-const db = mongoose.connection;
+// mongoose.connect(mongoURL + dbName);
+// const db = mongoose.connection;
 
-db.on("error", (err) => {
-  console.log(err);
-});
+// db.on("error", (err) => {
+//   console.log(err);
+// });
 
-db.once("open", () => {
-  console.log("Connected to mongodb");
-});
+// db.once("open", () => {
+//   console.log("Connected to mongodb");
+// });
 
 app.use("/", homeRouter);
 app.use("/blogs/add", isAuthenticated, addBlogRouter);
