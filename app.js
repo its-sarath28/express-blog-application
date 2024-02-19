@@ -68,7 +68,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
-    secret: "anyWayYouKnow",
+    //secret: "anyWayYouKnow",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })
@@ -82,17 +83,6 @@ app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.userId ? true : false;
   next();
 });
-
-// mongoose.connect(mongoURL + dbName);
-// const db = mongoose.connection;
-
-// db.on("error", (err) => {
-//   console.log(err);
-// });
-
-// db.once("open", () => {
-//   console.log("Connected to mongodb");
-// });
 
 app.use("/", homeRouter);
 app.use("/blogs/add", isAuthenticated, addBlogRouter);
