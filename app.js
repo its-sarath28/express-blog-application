@@ -71,6 +71,9 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours (in milliseconds)
+    },
   })
 );
 app.use(flash());
@@ -80,6 +83,11 @@ app.use((req, res, next) => {
 });
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.userId ? true : false;
+  next();
+});
+app.use((req, res, next) => {
+  res.locals.firstName = req.session.firstName;
+  res.locals.lastName = req.session.lastName;
   next();
 });
 

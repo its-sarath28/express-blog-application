@@ -100,6 +100,16 @@ router.post(
         }
         return true;
       }),
+    (req, res, next) => {
+      const { firstName, lastName, email, password, cnfPassword } = req.body;
+      if (!firstName && !lastName && !email && !password && !cnfPassword) {
+        return res.render("register", {
+          title: "Blog - register",
+          errors: [{ msg: "All fields are required" }],
+        });
+      }
+      next();
+    },
   ],
   async (req, res) => {
     const errors = validationResult(req);

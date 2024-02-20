@@ -5,6 +5,7 @@ const { body, validationResult } = require("express-validator");
 const Articles = require("../models/article");
 
 router.get("/", (req, res) => {
+  console.log(req.session);
   res.render("addBlog", {
     title: "Blog - Add",
     heading: "Add Blog",
