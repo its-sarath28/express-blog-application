@@ -38,6 +38,14 @@ router.get("/", async (req, res) => {
       );
     });
 
+    pages.forEach((page) => {
+      if (page.number === req.query.page) {
+        page.active = true;
+      } else {
+        page.active = false;
+      }
+    });
+
     res.render("home", {
       title: "Blog",
       heading: "Articles",

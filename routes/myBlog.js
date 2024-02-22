@@ -34,6 +34,14 @@ router.get("/", async (req, res) => {
       );
     });
 
+    pages.forEach((page) => {
+      if (page.number === req.query.page) {
+        page.active = true;
+      } else {
+        page.active = false;
+      }
+    });
+
     const refererPage = new URL(req.headers.referer).searchParams.get("page");
     const currentPageNumber = refererPage ? parseInt(refererPage) : 1;
 
