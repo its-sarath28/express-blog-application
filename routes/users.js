@@ -45,7 +45,6 @@ router.post("/login", async (req, res) => {
     if (isPasswordMatch) {
       req.session.userId = user._id;
       req.session.firstName = user.firstName;
-      req.session.lastName = user.lastName;
       res.redirect("/");
     } else {
       req.flash("danger", "Invalid credentials");
@@ -144,7 +143,6 @@ router.post(
         await user.save();
         req.session.userId = user._id;
         req.session.firstName = user.firstName;
-        req.session.lastName = user.lastName;
         req.flash("success", "User registered successfully!");
         res.redirect("/");
       } catch (err) {

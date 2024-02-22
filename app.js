@@ -87,7 +87,6 @@ app.use((req, res, next) => {
 });
 app.use((req, res, next) => {
   res.locals.firstName = req.session.firstName;
-  res.locals.lastName = req.session.lastName;
   next();
 });
 
